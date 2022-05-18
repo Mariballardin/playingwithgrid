@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-heading: 'Epilogue', sans-serif;
+  --ff-texting: 'Open sans', sans-serif;
+
+  --bg-primary: hsl(21, 28%, 90%);
+  --tree-color: hsl(208, 62%, 4%);
+  --blue-ocean: hsl(190, 57%, 58%);
+  --green-palmtree: hsl(78, 25%, 66%);
+  --sun: hsla(35, 68%, 55%, 0.415);
+  --font-color: hsl(35, 33%, 30%);
+  --fc-primary: white;
+  --fc-secundary: hsl(249, 50%, 80%);
+  font-size: 62.5%;
+  --fs-body: 1.6rem;
+  /* essa definição abaixo é para que o texto seja flexivel de acordo com a tela */
+  --fs-heading: clamp(4rem, 1rem + 6vw, 5.6rem);
+  --fs-heading-sm: clamp(3rem, 0.5rem + 3vw, 4rem);
+}
+
+html {
+  /* chrome://flags/#smooth-scrolling */
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--ff-texting);
+  background-color: var(--font-color);
+  color: var(--fc-primary);
+
+  font-size: var(--fs-body);
+  
+}
+
+.page {
+  max-width: clamp(33rem, 30rem + 60vw, 117rem);
+  /* max-width: 50rem; */
+  padding: 0 5rem;
+  margin: 0 auto;
+}
+
+
+img {
+  width: 100%;
+  height: auto;
+}
+header {
+  margin: 10rem 0 8rem;
+  font-family: var(--ff-heading);
+  text-align: left;
+
+  animation: topdown 700ms;
+
+
+
+}
+
+header p {
+  color: var(--green-palmtree);
+  text-transform: uppercase;
+
+  line-height: 3.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 1.7rem;
+
+  font-weight: 400;
+}
+
+header h1 {
+  font-weight: 400;
+  font-size: var(--fs-heading);
+  line-height: 4.8rem;
+  width:fit-content;
+
+}
+
+main {
+  display: grid;
+  gap: 3.2rem;
+
+  padding-bottom: 10rem;
+
+  animation: downtop 700ms 350ms backwards;
+}
+.card {
+  position: relative;
+  font-family: var(--ff-heading);
+  /* bottom: 5.2rem;
+  left: 5.8rem; */
+  /* margin-bottom: 3.2rem; */
+}
+.card img {
+  height: 41.6rem;
+  object-fit: cover;
+
+  border-radius: 6px;
+
+  transition: all 200ms;
+  /* all para editar a opacidade e a transição do tamanho, senao seria 'transition:transform 200ms'  */
+
+}
+
+.card img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+.card h2 {
+  position: absolute;
+  bottom: 5.2rem;
+  left: 2.8rem;
+
+  font-size: var(--fs-heading-sm);
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+}
+
+.card h2 span {
+  border-radius: 2rem;
+  background-color: var(--fc-primary);
+  font-size: var(--fs-body);
+  color: var(--tree-color);
+  font-weight: 400;
+  padding: 0 1.6rem;
+
+  width: fit-content;
+  height: 3.8rem;
+
+  display: inline-flex;
+  align-items: center;
+
+}
+
+/* header { */
+  /* animation-name: topdown;
+  animation-duration: 800ms; */
+
+  /* animation-fill-mode: forwards; essa opção faz ficar no estado final e não retomar ao zero.
+  animaction-direction: reverse; - faz começar do fim e ir até o inicio*/
+  /* animation-timing-function: ease; */
+  /* animation-iteration-count: infinite;
+  animation-play-state: paused; */
+
+
+/* header:hover {
+  /* animation-play-state: running;
+} */
+
+/* main {
+  animation: downtop 700ms 350ms reverse backwards; */
+  /* sempre que usar delay tem que usar backwards ou forwads */
+
+@keyframes topdown{
+  0% {
+    opacity: 0;
+
+    transform: translateY(-15px);
+
+  }
+
+
+
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+
+  }
+
+}
+
+@media (min-width: 750px) {
+  /* .page {
+    max-width: 100rem;
+    padding: 0 5rem;
+  } */
+  main {
+
+  grid-template-columns: 2fr 2fr;
+}
+}
+
+@media (min-width: 930px) {
+
+  main {
+    display: grid;
+    grid-template-areas:
+    "A B"
+    "C D";
+  }
+
+  main div:nth-child(1) {
+    grid-area: A;
+  }
+  main div:nth-child(2) {
+    grid-area: B;
+
+  }
+  main div:nth-child(3) {
+    grid-area: C;
+  }
+  main div:nth-child(4) {
+    grid-area: D;
+  }
+}
